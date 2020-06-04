@@ -286,11 +286,10 @@ class ARMAXKhronos_K(BaseStream):
             self.setupModel()
 
 
-            for x in range(1):
-                packet = self.arrivals[x]
-                # self.increment(packet)
-                self.index = 10
-                self.initialConfiguration(packet)
+            packet = self.arrivals[0]
+            # self.increment(packet)
+            self.index = 10
+            self.initialConfiguration(packet)
         else:
             packet = self.arrivals[self.index]
 
@@ -350,11 +349,10 @@ class ARMAXKhronos_K(BaseStream):
 
         self.setupModel()
 
-        for x in range(1):
-            packet = self.arrivals[x]
-            # self.increment(packet)
-            self.index = 10
-            self.initialConfiguration(packet)
+        packet = self.arrivals[0]
+        # self.increment(packet)
+        self.index = 10
+        self.initialConfiguration(packet)
 
         #print("cnt")
         #print(self.cnt)

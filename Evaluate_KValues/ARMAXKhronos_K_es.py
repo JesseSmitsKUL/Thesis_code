@@ -6,7 +6,7 @@ import numpy as np
 from copy import deepcopy
 from Evaluate_KValues.SimARMAXKhronos import SimARMAXKhronos
 from collections import defaultdict
-from Alternating.createBinaryNN import transformAltStream, createAltModelLSTM
+from Alternating.createBinaryNN import transformAltStream, createAltModelLSTM, createSVM
 
 # this file creates the ITMM model using ES as ATP model
 # to create in the appendix the difference between ITMM with AR and ES (same as in Khronos)
@@ -225,20 +225,26 @@ class ARMAXKhronos_K_es(BaseStream):
 
     def setupModel(self):
 
-        if self.onlineNN:
-            data = max(self.comp_window_size*2, self.index)
-            start = data-5000 if data >= 5000 else 0
-            x_set, y_set = transformAltStream(self.arrivals[start:data], self.dimNN)
-            streamModel, hist = createAltModelLSTM(x_set, y_set)
-            streamModel.summary()
-            self.modelAlt = streamModel
-        else:
-            self.dimNN = 5
-            file = '../Alternating/alt_ref_model.h5'
-            from keras.models import load_model
-            import tensorflow
-            self.modelAlt = tensorflow.keras.models.load_model(file)
+        data = max(self.comp_window_size, self.index)
+        start = data - 3000 if data >= 3000 else 0
+        x_set, y_set = transformAltStream(self.arrivals[start:data], 10)
+        streamModel, _ = createSVM(x_set, y_set)
+        self.modelAlt = streamModel
+        return
 
+        # if self.onlineNN:
+        #     data = max(self.comp_window_size*2, self.index)
+        #     start = data-5000 if data >= 5000 else 0
+        #     x_set, y_set = transformAltStream(self.arrivals[start:data], self.dimNN)
+        #     streamModel, hist = createAltModelLSTM(x_set, y_set)
+        #     streamModel.summary()
+        #     self.modelAlt = streamModel
+        # else:
+        #     self.dimNN = 5
+        #     file = '../Alternating/alt_ref_model.h5'
+        #     from keras.models import load_model
+        #     import tensorflow
+        #     self.modelAlt = tensorflow.keras.models.load_model(file)
 
 
 

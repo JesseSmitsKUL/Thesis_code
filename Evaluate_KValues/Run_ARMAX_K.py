@@ -87,7 +87,6 @@ def evaluateRuns():
 
     # inc removed because of small size
     csv_files = {
-
         "dyn_sFac": "../../Datasets/Dynamism/Spreading Factor/dyn_sf_rat.csv",
         "payloadSize": "../../Datasets/Dynamism/Payload Size/dyn_ps_rat.csv",
         'constraints': "../../Datasets/Heterogeneity/Constraints/rats_static_60.csv",
@@ -97,8 +96,8 @@ def evaluateRuns():
         "dyn_sp_inc": "../../Datasets/Dynamism/Sampling Period/dyn_sp_inc.csv",
         "dyn_sp_dec": "../../Datasets/Dynamism/Sampling Period/dyn_sp_dec.csv",
         "macTSCH": "../../Datasets/Heterogeneity/MAC/tsch.csv",
-		'static': "../../Datasets/rats_static.csv",
-        "Sampling": "../../Datasets/Heterogeneity/SamplingPeriods/rats_default_smip.csv"}
+        'static': "../../Datasets/rats_static.csv",
+        "sampling": "../../Datasets/Heterogeneity/SamplingPeriods/rats_default_smip.csv"}
 
 
 

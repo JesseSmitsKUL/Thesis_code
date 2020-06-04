@@ -76,11 +76,10 @@ class Khronos(BaseStream):
     def updateArrival(self):
         # print("khronos arrival")
         if self.index == -1:
-            for x in range(1):
-                packet = self.arrivals[x]
-                # self.increment(packet)
-                self.index = 10
-                self.initialConfiguration(packet)
+            packet = self.arrivals[0]
+            # self.increment(packet)
+            self.index = 10
+            self.initialConfiguration(packet)
         else:
             packet = self.arrivals[self.index]
             print("Khronos: ", self.index)
